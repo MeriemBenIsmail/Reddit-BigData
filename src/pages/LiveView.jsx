@@ -1,5 +1,7 @@
+import LiveViewContainer from "../components/LiveViewContainer/LiveViewContainer";
+
 const LiveView = () => {
-  return <div>live view</div>;
+  return <LiveViewContainer />;
 };
 
 export default LiveView;
