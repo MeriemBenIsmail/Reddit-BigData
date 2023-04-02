@@ -1,5 +1,7 @@
+import classes from "./LiveViewContainer.module.css";
 import { useEffect, useState } from "react";
 import { MOCK_HASHTAGS } from "../../mockHashtags";
+import LiveViewItem from "../LiveViewItem/LiveViewItem";
 
 const LiveViewContainer = () => {
   const [hashtags, setHashtags] = useState([]);
@@ -32,9 +34,9 @@ const LiveViewContainer = () => {
   }, [hashtags]);
 
   return (
-    <div className="liveViewContainer">
+    <div className={classes.liveViewContainer}>
       {hashtags.slice(0, 6).map((hashtag, index) => {
-        return <p key={index}>{hashtag}</p>;
+        return <LiveViewItem text={hashtag} key={index} />;
       })}
     </div>
   );
