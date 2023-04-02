@@ -8,7 +8,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/live-view" element={<LiveView />} />
-        <Route exact path="/batch-view" element={<BatchView />} />
+        <Route exact path="/statistics" element={<BatchView />} />
       </Routes>
     </BrowserRouter>
   );

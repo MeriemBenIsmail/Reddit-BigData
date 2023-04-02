@@ -2,6 +2,9 @@
 .batchWrapper {
     padding: 50px 50px;
     font-family: 'Poppins';
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
     
 }
 .batchContainer {
@@ -12,7 +15,7 @@
   gap: 30px;
 }
 .tweetsNbr {
-  background-color: #ffd1dc;
+  background-color: rgb(216, 191, 216);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
