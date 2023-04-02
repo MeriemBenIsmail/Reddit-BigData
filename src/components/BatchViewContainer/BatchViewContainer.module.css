@@ -1,0 +1,65 @@
+
+.batchWrapper {
+    padding: 50px 50px;
+    font-family: 'Poppins';
+    
+}
+.batchContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.tweetsNbr {
+  background-color: #ffd1dc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+}
+.tweetsNbr .title {
+  color: #fff;
+  font-size: 18px;
+}
+.tweetsNbr .nbr {
+  color: #fff;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 0px;
+}
+.tweetsPerMin {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+}
+.tweetsPerMin .title {
+  font-size: 18px;
+}
+.tweetsPerMin .nbr {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 0px;
+}
+.hashtagBoxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.header {
+    margin-top: 30px;
+}
+@media screen and (max-width: 1100px) {
+
+    .hashtagBoxes {
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (max-width: 700px) {
+
+    .batchContainer {
+        grid-template-columns: 1fr;
+    }
+}
