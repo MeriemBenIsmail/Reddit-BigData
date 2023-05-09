@@ -7,42 +7,36 @@ export const BatchViewContainer = () => {
   const topHash = MOCK_COMMENTS.slice(1, 7);
   const topHashtags = [
     {
-      hashtag:topHash[0],
-      nbr:"1210K",
-      bgColor:"rgb(135, 206, 235)"
-
+      hashtag: topHash[0],
+      nbr: "1210K",
+      bgColor: "rgb(135, 206, 235)",
     },
     {
-      hashtag:topHash[1],
-      nbr:"700K",
-      bgColor:"rgb(216, 191, 216)"
-
+      hashtag: topHash[1],
+      nbr: "700K",
+      bgColor: "rgb(216, 191, 216)",
     },
     {
-      hashtag:topHash[2],
-      nbr:"661K",
-      bgColor:"rgb(245, 245, 220)"
-
+      hashtag: topHash[2],
+      nbr: "661K",
+      bgColor: "rgb(245, 245, 220)",
     },
     {
-      hashtag:topHash[3],
-      nbr:"520K",
-      bgColor:"rgb(240, 192, 208)"
-
+      hashtag: topHash[3],
+      nbr: "520K",
+      bgColor: "rgb(240, 192, 208)",
     },
     {
-      hashtag:topHash[4],
-      nbr:"421K",
-      bgColor:"rgb(250, 250, 210)"
-
+      hashtag: topHash[4],
+      nbr: "421K",
+      bgColor: "rgb(250, 250, 210)",
     },
     {
-      hashtag:topHash[5],
-      nbr:"210K",
-      bgColor:"rgb(255, 160, 122)"
-
-    }
-  ]
+      hashtag: topHash[5],
+      nbr: "210K",
+      bgColor: "rgb(255, 160, 122)",
+    },
+  ];
   return (
     <div className={classes.batchWrapper}>
       <div className={classes.batchContainer}>
@@ -66,7 +60,14 @@ export const BatchViewContainer = () => {
 
         <div className={classes.hashtagBoxes}>
           {topHashtags.map((item, id) => {
-            return <BatchItem key={id} hashtag={item.hashtag.body} nbr={item.nbr} bgColor={item.bgColor}></BatchItem>;
+            return (
+              <BatchItem
+                key={id}
+                comment={item.hashtag.body}
+                sentiment={item.hashtag.sentiment}
+                bgColor={item.bgColor}
+              ></BatchItem>
+            );
           })}
         </div>
       </div>
