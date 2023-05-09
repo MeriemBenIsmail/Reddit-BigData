@@ -1,13 +1,13 @@
 import classes from "./LiveViewContainer.module.css";
 import { useEffect, useState } from "react";
-import { MOCK_HASHTAGS } from "../../mockHashtags";
+import { MOCK_COMMENTS } from "../../mockComments";
 import LiveViewItem from "../LiveViewItem/LiveViewItem";
 
 const LiveViewContainer = () => {
-  const [hashtags, setHashtags] = useState([]);
+  const [comments, setComments] = useState([]);
 
   const getNewValue = () => {
-    return MOCK_HASHTAGS[Math.floor(Math.random() * MOCK_HASHTAGS.length)];
+    return MOCK_COMMENTS[Math.floor(Math.random() * MOCK_COMMENTS.length)];
   };
 
   const getNewValues = () => {
@@ -18,25 +18,25 @@ const LiveViewContainer = () => {
     return newValueArray;
   };
 
-  const updateHashtags = () => {
-    const updatedHashtags = hashtags.slice(6);
-    updatedHashtags.push(...getNewValues());
-    setHashtags(updatedHashtags);
+  const updateComments = () => {
+    const updatedComments = comments.slice(6);
+    updatedComments.push(...getNewValues());
+    setComments(updatedComments);
   };
 
   useEffect(() => {
-    if (!hashtags.length) {
-      updateHashtags();
+    if (!comments.length) {
+      updateComments();
     }
     setTimeout(() => {
-      updateHashtags();
+      updateComments();
     }, 2000);
-  }, [hashtags]);
+  }, [comments]);
 
   return (
     <div className={classes.liveViewContainer}>
-      {hashtags.slice(0, 6).map((hashtag, index) => {
-        return <LiveViewItem text={hashtag} key={index} />;
+      {comments.slice(0, 6).map((comment, index) => {
+        return <LiveViewItem text={comment.body} sentiment={comment.sentiment} key={index} />;
       })}
     </div>
   );

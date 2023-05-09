@@ -1,10 +1,10 @@
 import React from "react";
 import classes from "./BatchViewContainer.module.css";
 import { BatchItem } from "./BatchItem";
-import { MOCK_HASHTAGS } from "../../mockHashtags";
+import { MOCK_COMMENTS } from "../../mockComments";
 
 export const BatchViewContainer = () => {
-  const topHash = MOCK_HASHTAGS.slice(1, 7);
+  const topHash = MOCK_COMMENTS.slice(1, 7);
   const topHashtags = [
     {
       hashtag:topHash[0],
@@ -62,11 +62,11 @@ export const BatchViewContainer = () => {
         </div>
       </div>
       <div className={classes.topHashtags}>
-        <h2 className={classes.header}>Top Hashtags</h2>
+        <h2 className={classes.header}>Top Comments On Reddit</h2>
 
         <div className={classes.hashtagBoxes}>
           {topHashtags.map((item, id) => {
-            return <BatchItem key={id} hashtag={item.hashtag} nbr={item.nbr} bgColor={item.bgColor}></BatchItem>;
+            return <BatchItem key={id} hashtag={item.hashtag.body} nbr={item.nbr} bgColor={item.bgColor}></BatchItem>;
           })}
         </div>
       </div>
