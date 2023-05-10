@@ -7,12 +7,30 @@
   font-weight: 600;
   border: 2px solid white;
   gap: 20px;
+  overflow: hidden;
+  
+  
 }
 
 .text {
+  padding: 0 16px; 
+  font-size: 16px;
   text-align: center;
+  overflow: hidden;
+  /* ellipses with 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+
+
+
 }
 .sentiment {
   width: 50px;
   height: 50px;
+}
+
+.sentimentText {
+  font-size: 13px;
+  font-weight: 600;
 }
