@@ -2,6 +2,7 @@ import classes from "./LiveViewItem.module.css";
 import { getColor } from "../LiveViewContainer/LiveView.color";
 import negative from "../../pages/negative.png";
 import positive from "../../pages/positive.png";
+import neutral from "../../pages/neutral.png";
 
 // type Sentiment = "Positive" | "Negative" | "Neutral" | "Unknown";
 
@@ -25,11 +26,16 @@ const LiveViewItem = ({ text, sentiment }) => {
       style={{ backgroundColor: sentimentToColor(sentiment) }}
     >
       <div className={classes.text}>{text}</div>
-      <img
-        className={classes.sentiment}
-        src={sentiment === "Positive" ? positive : negative}
-        alt="sentiment"
-      />
+      {sentiment === "Positive" && (
+        <img className={classes.sentiment} src={positive} alt="sentiment" />
+      )}
+      {sentiment === "Negative" && (
+        <img className={classes.sentiment} src={negative} alt="sentiment" />
+      )}
+      {sentiment === "Neutral" && (
+        <img className={classes.sentiment} src={neutral} alt="sentiment" />
+      )}
+
       <p className={classes.sentimentText}>{sentiment}</p>
     </div>
   );
