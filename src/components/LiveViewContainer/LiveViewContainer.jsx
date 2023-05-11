@@ -88,7 +88,7 @@ const LiveViewContainer = () => {
   return (
     <div className={classes.liveViewContainer}>
       <button className={classes.homeButton} onClick={goHome}>
-        <FontAwesomeIcon icon={faHome} fontSize={22} />
+        <FontAwesomeIcon icon={faHome} fontSize={20} />
       </button>
       {comments.slice(0, 6).map((comment) => {
         return (

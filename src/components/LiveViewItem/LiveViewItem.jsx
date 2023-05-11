@@ -1,24 +1,40 @@
 import classes from "./LiveViewItem.module.css";
-import negative from "../../pages/negative.png";
-import positive from "../../pages/positive.png";
-import { sentimentToColor } from "../../utils/utils";
+import { sentimentToColor, sentimentToIconColor } from "../../utils/utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHeart,
+  faHeartBroken,
+  faMehBlank,
+  faQuestion,
+} from "@fortawesome/free-solid-svg-icons";
 
 const LiveViewItem = ({ text, sentiment, date }) => {
+  const sentimentIcons = {
+    Positive: faHeart,
+    Negative: faHeartBroken,
+    Neutral: faMehBlank,
+    Uknown: faQuestion,
+  };
+
   return (
     <div
       className={classes.liveViewItem}
       style={{ backgroundColor: sentimentToColor(sentiment) }}
     >
-      <p className={classes.sentimentText}>{date}</p>
       <div className={classes.liveViewItemInfo}>
-        <div className={classes.text}>{text}</div>
-        <img
-          className={classes.sentiment}
-          src={sentiment === "Positive" ? positive : negative}
-          alt="sentiment"
-        />
-        <p className={classes.sentimentText}>{sentiment}</p>
+        <div className={classes.sentimentContainer}>
+          {sentiment && (
+            <FontAwesomeIcon
+              fontSize={25}
+              color={sentimentToIconColor(sentiment)}
+              icon={sentimentIcons[sentiment] || faQuestion}
+            />
+          )}
+          <p className={classes.sentimentText}>{sentiment}</p>
+        </div>
+        <p className={classes.date}>{date} ,</p>
       </div>
+      <div className={classes.text}>{text}</div>
     </div>
   );
 };

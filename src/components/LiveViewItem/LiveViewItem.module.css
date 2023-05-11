@@ -1,23 +1,22 @@
 .liveViewItem {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
   font-size: 22px;
   font-weight: 600;
   border: 2px solid white;
   gap: 30px;
-  padding: 24px 48px;
+  padding: 24px 50px;
 }
 
 .liveViewItemInfo {
   display: flex;
-  align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  gap: 20px;
 }
 
 .text {
+  margin: auto;
   padding: 0 16px;
   font-size: 16px;
   text-align: center;
@@ -31,8 +30,14 @@
   width: 50px;
   height: 50px;
 }
+.sentimentContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-.sentimentText {
+.sentimentText,
+.date {
   font-size: 13px;
   font-weight: 600;
 }
