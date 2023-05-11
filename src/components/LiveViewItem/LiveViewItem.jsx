@@ -1,36 +1,24 @@
 import classes from "./LiveViewItem.module.css";
-import { getColor } from "../LiveViewContainer/LiveView.color";
 import negative from "../../pages/negative.png";
 import positive from "../../pages/positive.png";
+import { sentimentToColor } from "../../utils/utils";
 
-// type Sentiment = "Positive" | "Negative" | "Neutral" | "Unknown";
-
-function sentimentToColor(sentiment) {
-  switch (sentiment) {
-    case "Positive":
-      return "lightgreen";
-    case "Negative":
-      return "#ffd1dc";
-    case "Neutral":
-      return "#ffe4e1";
-    default:
-      return "lightgray";
-  }
-}
-
-const LiveViewItem = ({ text, sentiment }) => {
+const LiveViewItem = ({ text, sentiment, date }) => {
   return (
     <div
       className={classes.liveViewItem}
       style={{ backgroundColor: sentimentToColor(sentiment) }}
     >
-      <div className={classes.text}>{text}</div>
-      <img
-        className={classes.sentiment}
-        src={sentiment === "Positive" ? positive : negative}
-        alt="sentiment"
-      />
-      <p className={classes.sentimentText}>{sentiment}</p>
+      <p className={classes.sentimentText}>{date}</p>
+      <div className={classes.liveViewItemInfo}>
+        <div className={classes.text}>{text}</div>
+        <img
+          className={classes.sentiment}
+          src={sentiment === "Positive" ? positive : negative}
+          alt="sentiment"
+        />
+        <p className={classes.sentimentText}>{sentiment}</p>
+      </div>
     </div>
   );
 };

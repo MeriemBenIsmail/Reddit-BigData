@@ -1,45 +1,49 @@
 import React from "react";
 import classes from "./BatchViewContainer.module.css";
-import { BatchItem } from "./BatchItem";
-import { MOCK_COMMENTS } from "../../mockComments";
+import DoughnutChart from "./DoughnutChart/DoughnutChart";
+import { sentimentToColor } from "../../utils/utils";
+import { useNavigate } from "react-router-dom";
 
 export const BatchViewContainer = () => {
-  const topHash = MOCK_COMMENTS.slice(1, 7);
-  const topHashtags = [
-    {
-      hashtag: topHash[0],
-      nbr: "1210K",
-      bgColor: "rgb(135, 206, 235)",
-    },
-    {
-      hashtag: topHash[1],
-      nbr: "700K",
-      bgColor: "rgb(216, 191, 216)",
-    },
-    {
-      hashtag: topHash[2],
-      nbr: "661K",
-      bgColor: "rgb(245, 245, 220)",
-    },
-    {
-      hashtag: topHash[3],
-      nbr: "520K",
-      bgColor: "rgb(240, 192, 208)",
-    },
-    {
-      hashtag: topHash[4],
-      nbr: "421K",
-      bgColor: "rgb(250, 250, 210)",
-    },
-    {
-      hashtag: topHash[5],
-      nbr: "210K",
-      bgColor: "rgb(255, 160, 122)",
-    },
-  ];
+  const navigate = useNavigate();
+
+  const goToLiveView = () => {
+    navigate("/live-view");
+  };
+
+  const mockdata = {
+    Positive: 5,
+    Negative: 2,
+    Neutral: 7,
+    Uknown: 8,
+  };
+
   return (
     <div className={classes.batchWrapper}>
-      <div className={classes.batchContainer}>
+      <div className={classes.info}>
+        <h1>
+          Sentiment Analysis Insights: Unveiling the Emotions within Comments
+        </h1>
+        <p>
+          Welcome to our Sentiment Analysis Insights page. Harnessing the power
+          of sentiment analysis, we categorize reddit commnets into positive,
+          negative, and neutral categories. By exploring the sentiment
+          distribution, you can gain a nuanced understanding of user sentiments,
+          enabling you to make informed decisions and foster a positive user
+          experience.
+        </p>
+        <div>
+          <button onClick={goToLiveView}>See live comments</button>
+        </div>
+      </div>
+      <div className={classes.doughnut}>
+        <DoughnutChart
+          labels={Object.keys(mockdata)}
+          data={Object.values(mockdata)}
+          colors={Object.keys(mockdata).map((s) => sentimentToColor(s))}
+        />
+      </div>
+      {/* {<div className={classes.batchContainer}>
         <div className={classes.tweetsNbr}>
           <p className={classes.title}>Yesterday's Tweets</p>
           <p className={classes.nbr}>425K</p>
@@ -70,7 +74,7 @@ export const BatchViewContainer = () => {
             );
           })}
         </div>
-      </div>
+      </div>} */}
     </div>
   );
 };

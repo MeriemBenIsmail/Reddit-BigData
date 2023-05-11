@@ -1,8 +1,42 @@
 .liveViewContainer {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  position: relative;
+}
+
+.homeButton {
+  position: absolute;
+  background-color: white;
+  border: 3px #c6a1c9 solid;
+  color: #c6a1c9;
+  padding: 10px;
+  border-radius: 8px;
+  width: 50px;
+  height: 50px;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.homeButton:hover {
+  color: #8a5c8e;
+  border: 3px #8a5c8e solid;
+}
+@media screen and (max-width: 800px) {
+  .liveViewContainer {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .liveViewContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
 }

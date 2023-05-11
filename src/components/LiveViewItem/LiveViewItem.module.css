@@ -1,19 +1,24 @@
 .liveViewItem {
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
   font-size: 22px;
   font-weight: 600;
   border: 2px solid white;
+  gap: 30px;
+  padding: 24px 48px;
+}
+
+.liveViewItemInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
   gap: 20px;
-  overflow: hidden;
-  
-  
 }
 
 .text {
-  padding: 0 16px; 
+  padding: 0 16px;
   font-size: 16px;
   text-align: center;
   overflow: hidden;
@@ -21,9 +26,6 @@
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
-
-
-
 }
 .sentiment {
   width: 50px;
