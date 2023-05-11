@@ -1,12 +1,9 @@
 import classes from "./LiveViewContainer.module.css";
-import { useEffect, useState } from "react";
 import LiveViewItem from "../LiveViewItem/LiveViewItem";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-
-// connect to websocket server
-const socket = new WebSocket("ws://localhost:4000");
+import { useWS } from "../../App";
 
 const LiveViewContainer = () => {
   const navigate = useNavigate();
@@ -14,72 +11,10 @@ const LiveViewContainer = () => {
     navigate("/statistics");
   };
 
-  const [comments, setComments] = useState([
-    {
-      _id: 1,
-      body: "Test comment",
-      sentiment: "Neutral",
-      timestamp: 1639172876,
-    },
-    {
-      _id: 1,
-      body: "Test comment",
-      sentiment: "Neutral",
-      timestamp: 1639172876,
-    },
-    {
-      _id: 1,
-      body: "Test comment",
-      sentiment: "Positive",
-      timestamp: 1639172876,
-    },
-    {
-      _id: 1,
-      body: "Test comment",
-      sentiment: "Negative",
-      timestamp: 1639172876,
-    },
-    {
-      _id: 1,
-      body: "Test comment",
-      sentiment: "Positive",
-      timestamp: 1639172876,
-    },
-    {
-      _id: 1,
-      body: "Test comment",
-      sentiment: "Unknown",
-
-      timestamp: 1639172876,
-    },
-    {
-      _id: 1,
-      body: "Test comment",
-      sentiment: "Positive",
-      timestamp: 1639172876,
-    },
-  ]);
-
-  useEffect(() => {
-    socket.onopen = () => {
-      console.log("connected to websocket server");
-    };
-    socket.onmessage = (message) => {
-      console.log(
-        "🚀 ~ file: LiveViewContainer.jsx:29 ~ useEffect ~ message:",
-        message
-      );
-      try {
-        const comments = JSON.parse(message.data);
-        setComments(comments);
-      } catch (e) {
-        console.log("🚀 ~ file: LiveViewContainer.jsx:29 ~ useEffect ~ e:", e);
-      }
-    };
-  }, []);
+  const { comments } = useWS();
 
   const getDate = (timestamp) => {
-    const date = new Date(timestamp);
+    const date = new Date(+timestamp * 1000);
     return (
       date.getHours() + ":" + date.getMinutes() + ", " + date.toDateString()
     );

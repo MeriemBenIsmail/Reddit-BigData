@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./BatchViewContainer.module.css";
 import DoughnutChart from "./DoughnutChart/DoughnutChart";
 import { sentimentToColor } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
+import socket from "../../utils/ws";
+import { useWS } from "../../App";
 
 export const BatchViewContainer = () => {
   const navigate = useNavigate();
@@ -11,12 +13,7 @@ export const BatchViewContainer = () => {
     navigate("/live-view");
   };
 
-  const mockdata = {
-    Positive: 5,
-    Negative: 2,
-    Neutral: 7,
-    Uknown: 8,
-  };
+  const { batchResult } = useWS();
 
   return (
     <div className={classes.batchWrapper}>
@@ -37,44 +34,14 @@ export const BatchViewContainer = () => {
         </div>
       </div>
       <div className={classes.doughnut}>
-        <DoughnutChart
-          labels={Object.keys(mockdata)}
-          data={Object.values(mockdata)}
-          colors={Object.keys(mockdata).map((s) => sentimentToColor(s))}
-        />
+        {batchResult && (
+          <DoughnutChart
+            labels={Object.keys(batchResult)}
+            data={Object.values(batchResult)}
+            colors={Object.keys(batchResult).map((s) => sentimentToColor(s))}
+          />
+        )}
       </div>
-      {/* {<div className={classes.batchContainer}>
-        <div className={classes.tweetsNbr}>
-          <p className={classes.title}>Yesterday's Tweets</p>
-          <p className={classes.nbr}>425K</p>
-        </div>
-        <div className={classes.tweetsPerMin}>
-          <div className={classes.item}>
-            <p className={classes.title}>Tweets this week</p>
-            <p className={classes.nbr}>120K</p>
-          </div>
-          <div className={classes.item}>
-            <p className={classes.title}>Tweets this month</p>
-            <p className={classes.nbr}>652K</p>
-          </div>
-        </div>
-      </div>
-      <div className={classes.topHashtags}>
-        <h2 className={classes.header}>Top Comments On Reddit</h2>
-
-        <div className={classes.hashtagBoxes}>
-          {topHashtags.map((item, id) => {
-            return (
-              <BatchItem
-                key={id}
-                comment={item.hashtag.body}
-                sentiment={item.hashtag.sentiment}
-                bgColor={item.bgColor}
-              ></BatchItem>
-            );
-          })}
-        </div>
-      </div>} */}
     </div>
   );
 };

@@ -8,13 +8,13 @@ import {
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 
+const sentimentIcons = {
+  Positive: faHeart,
+  Negative: faHeartBroken,
+  Neutral: faMehBlank,
+  Uknown: faQuestion,
+};
 const LiveViewItem = ({ text, sentiment, date }) => {
-  const sentimentIcons = {
-    Positive: faHeart,
-    Negative: faHeartBroken,
-    Neutral: faMehBlank,
-    Uknown: faQuestion,
-  };
 
   return (
     <div
@@ -32,7 +32,7 @@ const LiveViewItem = ({ text, sentiment, date }) => {
           )}
           <p className={classes.sentimentText}>{sentiment}</p>
         </div>
-        <p className={classes.date}>{date} ,</p>
+        <p className={classes.date}>{date}</p>
       </div>
       <div className={classes.text}>{text}</div>
     </div>
